@@ -1,0 +1,8 @@
+domain: example.com
+multigroup: true
+repo: github.com/lanyilee/opedemo
+resources:
+- group: cache
+  kind: AppService
+  version: v1
+version: "2"
