@@ -67,12 +67,12 @@ func (r *AppServiceReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) 
 	if err = r.Client.Get(context.TODO(), req.NamespacedName, deploy); err != nil && errors.IsNotFound(err) {
 		//创建关联资源
 		//创建deploy
-		deploy := NewDeploy(*instance)
+		deploy := NewDeploy(instance)
 		if err := r.Client.Create(context.TODO(), deploy); err != nil {
 			return ctrl.Result{}, err
 		}
 		//创建service
-		service := NewService(*instance)
+		service := NewService(instance)
 		if err := r.Client.Create(context.TODO(), service); err != nil {
 			return ctrl.Result{}, err
 		}
