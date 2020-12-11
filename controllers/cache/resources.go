@@ -76,7 +76,7 @@ func NewService(app *cachev1.AppService) *corev1.Service {
 			Name:      app.Name,
 			Namespace: app.Namespace,
 			OwnerReferences: []metav1.OwnerReference{
-				*metav1.NewControllerRef(&app, schema.GroupVersionKind{
+				*metav1.NewControllerRef(app, schema.GroupVersionKind{
 					Group:   appsv1.SchemeGroupVersion.Group,
 					Version: appsv1.SchemeGroupVersion.Version,
 					Kind:    "AppService",
