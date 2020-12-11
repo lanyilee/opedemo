@@ -88,7 +88,7 @@ func (r *AppServiceReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) 
 		}
 	}
 	// 对比声明,先反序列化成一个struct，不符合返回错误
-	oldSpec := cachev1.AppServiceSpec{}
+	oldSpec := &cachev1.AppServiceSpec{}
 	if err := json.Unmarshal([]byte(instance.Annotations["spec"]), oldSpec); err != nil {
 		return ctrl.Result{}, err
 	}
